@@ -126,13 +126,27 @@ LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+# EMAIL SETTING
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_POST = 465
-EMAIL_HOST_USER = 'example@qq.com'
-EMAIL_HOST_PASSWORD = 'password'
+EMAIL_HOST_USER = '13205012@qq.com'
+EMAIL_HOST_PASSWORD = 'ocobdilksnnscafh'
 EMAIL_USE_TLS = True
+
+# CELERY
+BROKER_URL = 'amqp://guest@localhost//'
+CELERY_RESULT_BACKEND = 'amqp://guest@localhost//'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Shanghai'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
+)
