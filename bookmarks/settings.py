@@ -27,7 +27,7 @@ SECRET_KEY = '0)t@&=l0k^r0#@or!wq7vt-l$k&4j9nbh56^b@*m_quw&vniz$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social.apps.django_app.default',
+    'social_django',
+    'images',
 ]
 
 MIDDLEWARE = [
@@ -132,7 +135,7 @@ LOGOUT_URL = reverse_lazy('logout')
 EMAIL_HOST = 'smtp.qq.com'
 EMAIL_POST = 465
 EMAIL_HOST_USER = '13205012@qq.com'
-EMAIL_HOST_PASSWORD = 'ocobdilksnnscafh'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
 # CELERY
@@ -149,4 +152,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'account.authentication.EmailAuthBackend',
+    'social.backends.facebook.FacebookOAuth2',
+    'social.backends.twitter.TwitterOAuth',
 )
+
+# Social Authentication Facebook, Twitter, Google
+SOCIAL_AUTH_FACEBOOK_KEY = ''  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = ''  # Facebook App Secret
+
+SOCIAL_AUTH_TWITTER_KEY = ''  # Twitter Consumer Key
+SOCIAL_AUTH_TWITTER_SECRET = ''  # Twitter Consumer Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''  # Google Consumer Key
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''  # Google Consumer Secret
