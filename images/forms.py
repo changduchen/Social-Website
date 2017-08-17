@@ -1,5 +1,6 @@
-from django import forms
 import urllib
+
+from django import forms
 from django.core.files.base import ContentFile
 from django.utils.text import slugify
 
